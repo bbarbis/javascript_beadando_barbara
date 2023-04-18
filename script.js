@@ -1,33 +1,37 @@
-import { tablazatbanMegjelenit } from "./megjelenit.js";
-import { OBJEKTUMLISTA, kulcsLista } from "./lista.js";
+import { tablazatbanMegjelenit} from "./megjelenit.js";
+import { OBJEKTUMLISTA, kulcsLista} from "./lista.js";
 import { rendezesObjektum } from "./rendezes.js";
-import { szurKorSzerint, szurNevSzerint } from "./szures.js";
+import { szurKorSzerint, szurNevSzerint} from "./szures.js";
 
-$(function() {
-  const tablazat = $(".tabla");
-  let txt = tablazatbanMegjelenit(OBJEKTUMLISTA);
-  tablazat.html(txt);
+$(function(){
 
-  let szuresiFeltetel = "";
-  let szurtLista = szurNevSzerint(OBJEKTUMLISTA, szuresiFeltetel);
+    const tablazat = $(".tabla");
+    let txt = tablazatbanMegjelenit(OBJEKTUMLISTA);
 
-  const nevELEM = $("#nev");
-  nevELEM.on("keyup", function() {
-    szuresiFeltetel = nevELEM.val();
-    szurtLista = szurNevSzerint(OBJEKTUMLISTA, szuresiFeltetel);
-    tablazat.html(tablazatbanMegjelenit(szurtLista));
-  });
+    tablazat.html(txt)
 
-  nevSzerint();
+    let szuresiFeltetel = "d";
+    var szurtLista = szurNevSzerint(OBJEKTUMLISTA, szuresiFeltetel);
+    const szurFelt = "<12";
+    var szurtLista = szurKorSzerint(OBJEKTUMLISTA, szuresiFeltetel);
+
+    const nevELEM = $("#nev");
+    nevELEM.on("keyup", function(){
+        szuresiFeltetel = nevELEM.val();
+        szurtLista = szurNevSzerint(OBJEKTUMLISTA, szuresiFeltetel);
+
+    });
+    nevSzerint();
+
 });
 
-export function nevSzerint() {
-  const tabla = $(".tabla");
-  let t = tablazatbanMegjelenit(OBJEKTUMLISTA);
-  tabla.html(t);
+export function nevSzerint(){
+    const tabla = $(".tabla");
+    let t = tablazatbanMegjelenit(OBJEKTUMLISTA);
+    tabla.html(txt);
+    $("#nev").click(function(){
+        rendezesObjektum(OBJEKTUMLISTA, "nev");
+        nevSzerint();
 
-  $("#nev").click(function() {
-    rendezesObjektum(OBJEKTUMLISTA, "nev");
-    nevSzerint();
-  });
+    });
 }

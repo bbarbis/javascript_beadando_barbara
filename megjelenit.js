@@ -1,7 +1,7 @@
 export function tablazatbanMegjelenit(OBJEKTUMLISTA) {
     let text = "<table>";
   
-    text += "<tr><th id ='nev'>Név⇅</th><th>Kor⇅</th><th>Fajta⇅</th></tr>";
+    text += "<tr class='table table-dark'><th id ='nev'>Név⇅</th><th>Kor⇅</th><th>Fajta⇅</th><th id='torles'>Törlés</th></tr>";
   
     for (let i = 0; i < OBJEKTUMLISTA.length; i++) {
       text +=
@@ -15,7 +15,7 @@ export function tablazatbanMegjelenit(OBJEKTUMLISTA) {
         "<td>" +
         OBJEKTUMLISTA[i].fajta +
         "</td>" +
-        "</<tr>";
+        "<td>❌</td></tr>";
     }
   
     // jQuery append metódus használata
