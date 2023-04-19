@@ -1,7 +1,7 @@
 export function tablazatbanMegjelenit(OBJEKTUMLISTA) {
-    let text = "<table>";
+    let text = "<table class='table'>";
   
-    text += "<tr class='table table-dark'><th id ='nev'>Név⇅</th><th>Kor⇅</th><th>Fajta⇅</th><th id='torles'>Törlés</th></tr>";
+    text += "<thead class='table-dark'><tr><th id='neve'>Név⇅</th><th id='kora'>Kor⇅</th><th id='faja'>Fajta⇅</th><th id='torles'>Törlés</th></tr></thead>";
   
     for (let i = 0; i < OBJEKTUMLISTA.length; i++) {
       text +=

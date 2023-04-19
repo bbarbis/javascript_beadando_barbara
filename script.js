@@ -1,7 +1,8 @@
-import { tablazatbanMegjelenit} from "./megjelenit.js";
-import { OBJEKTUMLISTA, kulcsLista} from "./lista.js";
+import { tablazatbanMegjelenit } from "./megjelenit.js";
+import { OBJEKTUMLISTA, kulcsLista } from "./lista.js";
 import { rendezesObjektum } from "./rendezes.js";
-import { szurKorSzerint, szurNevSzerint} from "./szures.js";
+import { szurKorSzerint, szurNevSzerint } from "./szures.js";
+
 
 $(function(){
 
@@ -11,27 +12,24 @@ $(function(){
     tablazat.html(txt)
 
     let szuresiFeltetel = "d";
-    var szurtLista = szurNevSzerint(OBJEKTUMLISTA, szuresiFeltetel);
-    const szurFelt = "<12";
-    var szurtLista = szurKorSzerint(OBJEKTUMLISTA, szuresiFeltetel);
+    let szurtLista = szurNevSzerint(OBJEKTUMLISTA, szuresiFeltetel);
 
-    const nevELEM = $("#nev");
+    const nevELEM = $("#neve");
     nevELEM.on("keyup", function(){
         szuresiFeltetel = nevELEM.val();
         szurtLista = szurNevSzerint(OBJEKTUMLISTA, szuresiFeltetel);
-
+        tablaMegjelenitese(szurtLista);
     });
-    nevSzerint();
 
+    tablaMegjelenitese(OBJEKTUMLISTA);
 });
 
-export function nevSzerint(){
+function tablaMegjelenitese(lista){
     const tabla = $(".tabla");
-    let t = tablazatbanMegjelenit(OBJEKTUMLISTA);
-    tabla.html(txt);
-    $("#nev").click(function(){
-        rendezesObjektum(OBJEKTUMLISTA, "nev");
-        nevSzerint();
-
+    let t = tablazatbanMegjelenit(lista);
+    tabla.html(t);
+    $("#neve").click(function(){
+        rendezesObjektum(lista, "nev");
+        tablaMegjelenitese(lista);
     });
 }
